@@ -31,10 +31,23 @@ YORP bw   PVBR w
 
 [Frame 3]
 Player 1  Player 2
+YORP bw   PVBR w
 YOVV b
 
+...
 
-Player 1 won the game in 7 turns!
+[Frame X]
+Player 1      Player 2
+YORP bw       PVBR w
+YOVV b        RBRB b
+YYBB w        YYBG w
+VRRY bw       PPRY ww
+GVGY bw       OBOB w
+RRVY w        OOYO b
+BRGV bwww     BOGR bbw
+GBRV bbbb     BOPR bww
+
+Player 1 won the game in 8 turns!
 Choose:
 n new round
 v change variant
