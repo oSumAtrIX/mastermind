@@ -1,6 +1,6 @@
 # Mastermind
 
-A code-breaking CLI game for two players written in C89
+A code-breaking CLI game for up to two players written in C89
 ## Compile
 
 To compile this project, you will need gcc (C89)
