@@ -17,9 +17,9 @@ Enter name of player 1:
 
 Enter name of player 2:
 
-Player 1 enter your Code (YORPVB):
+Player 1 enter your Code (BGVRYO):
 
-Player 2 enter your Code (YORPVB):
+Player 2 enter your Code (BGVRYO):
 
 [Frame 1]
 Player 1    Player 2          
