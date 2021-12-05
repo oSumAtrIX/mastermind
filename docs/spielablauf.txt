@@ -1,0 +1,17 @@
+1. Auswahl Spielvariante
+-> Screentext, getInput, save parameter
+2. Auswahl Anzahl Spieler
+-> Screentext, getInput, save parameter
+3. Input Spielername(n)
+-> Screentext, getInput, save parameter
+4. Farbcode random / input
+5. Input Spieler 1 Versuch 1
+6. Auswertung Versuch 1
+( Input Spieler 2 Versuch 1)
+( Auswertung Spieler 2 Versuch x)
+7. Auswertung Versuch x 
+( Input Spieler 2 Versuch x)
+( Auswertung Spieler 2 Versuch x)
+8. Spiel endet (durch erfolgreichen Versuch oder max. Rateversuche)
+9. Anzeige Statistik
+10. Neues Spiel?
