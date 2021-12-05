@@ -1,1 +1,6 @@
-"# Mastermind - A code-breaking CLI game for two players written in C" 
+# Mastermind
+
+A code-breaking CLI game for two players written in C89
+## Authors
+
+- [@oSumAtrIX](https://osumatrix.me)
