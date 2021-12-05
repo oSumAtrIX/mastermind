@@ -1,0 +1,9 @@
+Color Code
+B Blue
+G Green
+V Violet
+R Red
+Y Yellow
+O Orange
+P ink
+T Turquoise
