@@ -18,4 +18,4 @@ gcc -Wall -Wextra -ansi -pedantic main.c -o mastermind
 ## Authors
 
 - [@oSumAtrIX](https://osumatrix.me)
-- alphakilo11
+- [@alphakilo11](https://github.com/alphakilo11)
