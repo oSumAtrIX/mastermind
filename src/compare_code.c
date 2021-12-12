@@ -1,3 +1,6 @@
+/* BUG results in segmentation error
+TODO count color correct
+TODO remove main function (included for testing purposes) */
 #include <stdio.h>
 
 #define CODELENGTH 4
