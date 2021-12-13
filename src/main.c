@@ -1,21 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
-
 #include "game_manager.c"
 
 int main()
 {		
 	/* Initialize the game manager */
-	game_manager = (struct GameManager *) malloc(sizeof(struct GameManager));
-	
-	/* Add game */
-	/* add_game("ohan"); */
+	game_manager_init();
 
-	/* ..or two */
-	/* add_game("alex"); */
+	/* add games */
+	add_game(manager, "ohan");
+	add_game(manager, "alex");
 	
-	/* Run the game */
+	/* start games */
 	start();
-	
 	return 0;
 }
