@@ -36,7 +36,7 @@ int main(void)
             ;
         }
         strncpy(sorted_players[j], players[k], NAMELENGTH);
-        scores[k] = SCORE_USED;
+        scores[k] = SCORE_USED; /* to mark it as "used" */
     }
 
     printf("=====SORTED======\n");
