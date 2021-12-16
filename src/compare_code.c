@@ -24,6 +24,10 @@ int main()
 }
 
 int compare_code(int *count_correct, int *count_color_correct, const char guess[], const char key[])
+/* Function which compares the guess string with the secret code string and determines the number of black pegs (correct char and index) and white pegs (correct char , wrong index).
+Input: address to store black pegs, address to store white pegs, guess string, secret code string
+Saves: number of black and white pegs to corresponding addresses.
+Returns: 0 if everything went fine. */
 {
     int i;
     /* create copies of key and guess. As CODELENGTH will always be a comparebly small number, I don't
