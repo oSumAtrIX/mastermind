@@ -1,4 +1,4 @@
-#ifndef _H_INCLUDE
+#ifndef CLI_H_INCLUDE
 #define CLI_H_INCLUDE
 
 typedef struct
@@ -7,5 +7,8 @@ typedef struct
 } game_manager_t;
 
 void game_manager_init();
+
 void add_game(const char *foruser);
 void start();
+
+#endif
