@@ -1,5 +1,5 @@
 all:
-	gcc -Wall -Wextra -ansi -pedantic src/main.c -I src/headers -o bin/mastermind 
+	gcc -Wall -Wextra -ansi -pedantic -o bin/mastermind -I ./src/headers/ src/main.c 
 
 clean:
 	rm -f $(OBJS) $(OUT)
