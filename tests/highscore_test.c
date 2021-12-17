@@ -19,20 +19,24 @@ int main(void)
 
     int i, j, k, max;
     printf("=====UNSORTED======\n");
-    for (i = 0; i < PLAYERNUMBER; i++){
+    for (i = 0; i < PLAYERNUMBER; i++)
+    {
         printf("%32s\t%i\n", players[i], scores[i]);
     }
 
-    for(j = 0; j < PLAYERNUMBER; j++) { /*iterate through sorted_scores */
+    for (j = 0; j < PLAYERNUMBER; j++)
+    { /*iterate through sorted_scores */
         /* Sort Scores and store in sorted_scores */
         max = scores[j];
-        for (i = 0; i < PLAYERNUMBER; i++){ /* iterate through scores */
+        for (i = 0; i < PLAYERNUMBER; i++)
+        { /* iterate through scores */
             max = max > scores[i] ? max : scores[i];
         }
         sorted_scores[j] = max;
 
         /* find Scores, get corresponding playername and store in sorted_players */
-        for (k = 0; (scores[k] != max); k++) { /*iterate through scores */
+        for (k = 0; (scores[k] != max); k++)
+        { /*iterate through scores */
             ;
         }
         strncpy(sorted_players[j], players[k], NAMELENGTH);
@@ -40,7 +44,8 @@ int main(void)
     }
 
     printf("=====SORTED======\n");
-    for (i = 0; i < PLAYERNUMBER; i++){
+    for (i = 0; i < PLAYERNUMBER; i++)
+    {
         printf("%32s\t%i\n", sorted_players[i], sorted_scores[i]);
     }
     return 0;

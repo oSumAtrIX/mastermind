@@ -1,13 +1,13 @@
 #ifndef NODE_H_INCLUDE
 #define NODE_H_INCLUDE
 
-typedef struct {
+typedef struct node {
 	void *data;
-	node_t *next;
+	struct node *next;
 } node_t;
 
 node_t *node_new(void *data);
 void prepend_node(node_t *head, void *data);
-void node_free(node_t *node);
+void remove_node(node_t *head, node_t *node);
 
 #endif

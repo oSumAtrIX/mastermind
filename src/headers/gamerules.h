@@ -1,0 +1,26 @@
+#ifndef GAMERULES_H_INCLUDE
+#define GAMERULES_H_INCLUDE
+
+#define RED 0
+#define GREEN 1
+#define BLUE 2
+#define YELLOW 3
+#define VIOLET 4
+#define ORANGE 5
+#define PINK 6
+#define TURQUOISE 7
+
+#define COLOR_RED 0xFF0000
+#define COLOR_GREEN 0x00FF00
+#define COLOR_BLUE 0x0000FF
+#define COLOR_YELLOW 0xFFFF00
+#define COLOR_VIOLET 0x7000FF
+#define COLOR_ORANGE 0xFF7F00
+#define COLOR_PINK 0xFF00FF
+#define COLOR_TURQUOISE 0x00FFFF
+
+#define PLAYER_LIVES 10
+#define CODE_LENGTH 4
+#define OS "Windows"
+
+#endif

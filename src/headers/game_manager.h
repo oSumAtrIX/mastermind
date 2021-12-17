@@ -1,6 +1,8 @@
 #ifndef CLI_H_INCLUDE
 #define CLI_H_INCLUDE
 
+#include "node.h"
+
 typedef struct
 {
 	node_t *game_list;
