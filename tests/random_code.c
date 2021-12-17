@@ -6,7 +6,7 @@ TODO: remove main
 #include <time.h>
 #include <stdlib.h>
 
-int random_code(const char colors[],char code[], const int codelength)
+int random_code(const char colors[], char code[], const int codelength)
 /* Creates a random secret code.
 Input: Available chars, Address where the code should be stored, desired length of the code
 Saves: secret code string to code

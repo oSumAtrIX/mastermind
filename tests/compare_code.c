@@ -16,9 +16,7 @@ int main()
     char key[] = "GBRV";
     int richtig = 0;
     int fast_richtig = 0;
-    int *p = &richtig;
-
-    compare_code(p, &fast_richtig, guess, key);
+    compare_code(&richtig, &fast_richtig, guess, key);
 
     printf("Guess: %s\nKey: %s\nBlack pegs: %i\nWhite pegs: %i\n", guess, key, richtig, fast_richtig);
 }
@@ -39,16 +37,21 @@ Returns: 0 if everything went fine. */
 
     *count_correct = 0;
     *count_color_correct = 0;
-    for (i = 0; i < CODELENGTH; i++) {
-            if (guess_copy[i] == key_copy[i]) {
-                ++(*count_correct);
-                guess_copy[i] = USED_A;
-            }
+    for (i = 0; i < CODELENGTH; i++)
+    {
+        if (guess_copy[i] == key_copy[i])
+        {
+            ++(*count_correct);
+            guess_copy[i] = USED_A;
+        }
     }
-    for (i = 0; i < CODELENGTH; i++) {
+    for (i = 0; i < CODELENGTH; i++)
+    {
         int j;
-        for (j = 0; j < CODELENGTH; j++) {
-            if (guess_copy[i] == key_copy[j]) {
+        for (j = 0; j < CODELENGTH; j++)
+        {
+            if (guess_copy[i] == key_copy[j])
+            {
                 ++(*count_color_correct);
                 key_copy[j] = USED_B;
                 break;
