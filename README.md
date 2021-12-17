@@ -6,7 +6,7 @@ A code-breaking CLI game for up to two players written in C89
 To compile this project, you will need gcc (C89)
 
 ```bash
-gcc -Wall -Wextra -ansi -pedantic main.c -o mastermind
+gcc -Wall -Wextra -ansi -pedantic -o bin/mastermind -I ./src/headers/ src/main.c 
 ```
     
 ## Usage/Examples
