@@ -13,7 +13,7 @@ void prepend_node(node_t *head, void *data)
 {
 	node_t *node = node_new(data);
 	node->next = head;
-	*head = *node;
+	head = node;
 }
 
 void remove_node(node_t *head, node_t *node)
@@ -22,5 +22,6 @@ void remove_node(node_t *head, node_t *node)
 	while (current->next != node)
 		current = current->next;
 	current->next = node->next;
+	free(node->data);
 	free(node);
 }

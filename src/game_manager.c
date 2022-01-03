@@ -29,45 +29,50 @@ void add_game(const char *foruser)
 }
 
 void start()
-{		
-	int result;
+{	
 	while (1)
 	{
 		node_t *current;
-		for (current = game_manager->game_list; current != NULL; current = current->next)
+
+		for (current = game_manager->game_list; current; current = current->next)
 		{
 			game_t *game = (game_t *)current->data;
+			printf("%s\n", game->player->name);
+			getchar();
+		}
+		continue;
+		for (current = game_manager->game_list; current != NULL; current = current->next) /* multiplayer not working */
+		{	
+			game_t *game = (game_t *)current->data;
+
 			char guess[CODE_LENGTH + 1];
 			switch (game->current_state)
 			{
-			case GENERATE_CODE:
-				printf("Generating code for %s\n", game->player->name);
-				set_code(game);
-				continue;
-			case GUESS:
-				printf("%s, please enter your guess: ", game->player->name);
-				do {
-					get_input(guess, CODE_LENGTH);
-					if (validate_input(guess, CODE_LENGTH))
-						break;
-					printf("Invalid input \"%s\", please try again.\n", guess);
-				} while (1);
-				add_guess(game, guess);
-				continue;
-			case EVALUATE_RESULT:
-				printf("Evaluating result for %s\n", game->player->name);
-				printf("\n%s, your guess was %s\n", game->player->name, ((row_t *)game->rows[PLAYER_LIVES - game->player->lives].data)->guess);
-				printf("%s, your code was %s\n", game->player->name, game->code);
-				result = evaluate_result(game);
-				if (result == 1) printf("%s, you won!\n", game->player->name);
-				else if (result == 0) printf("%s, you lost!\n", game->player->name);
-				else printf("%s, you lost!\n", game->player->name);
-				continue;
-			default:
-				printf("%s, you lost!\n", game->player->name);
-				destroy_game(game);
-				remove_node(game_manager->game_list, current);
-				continue;
+				case GENERATE_CODE:
+					printf("%s: ", game->player->name);
+					set_code(game);
+					continue;
+				case GUESS:
+					do {
+						get_input(guess, CODE_LENGTH);
+						if (validate_input(guess, CODE_LENGTH))
+							break;
+						printf("Invalid input \"%s\", please try again.\n", guess);
+					} while (1);
+					add_guess(game, guess);
+					continue;
+				case EVALUATE_RESULT:
+					printf("%s\n", game->code);
+					game->result = evaluate_result(game);
+					if (game->result == -1)
+						printf("You have %d lives left.\n", game->player->lives);
+					continue;
+				default:
+					if (game->result == 1)
+						printf("Congratulations, you won!\n");
+					else
+						printf("Sorry, you lost.\n");
+					return; /* TODO: remove & fix multiplayer */
 			}
 		}
 	}

@@ -17,8 +17,8 @@ typedef struct
 {
 	player_t *player;
 	char *code;
-	node_t *rows;
-
+	row_t **rows;
+	int result;
 	enum game_state current_state;
 } game_t;
 
@@ -27,6 +27,6 @@ game_t *create_game(const char *playername);
 void set_code(game_t *game);
 int add_guess(game_t *game, char *guess);
 int evaluate_result(game_t *game);
-int compare_code(row_t *row);
+int compare_code(char *code, row_t *row);
 
 #endif
