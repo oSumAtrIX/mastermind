@@ -4,6 +4,8 @@
 
 /* TODO: add interface with pebles */
 
+/* TODO: sanitize input */
+
 void get_input(char *input)
 {
 	int i;

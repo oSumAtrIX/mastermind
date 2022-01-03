@@ -45,12 +45,10 @@ void start()
 				set_code(game);
 				continue;
 			case GUESS:
-			{
 				printf("%s, please enter your guess: ", game->player->name);
 				get_input(guess);
 				add_guess(game, guess);
 				continue;
-			}
 			case EVALUATE_RESULT:
 				printf("Evaluating result for %s\n", game->player->name);
 				evaluate_result(game);
@@ -59,7 +57,6 @@ void start()
 				printf("%s, you lost!\n", game->player->name);
 				destroy_game(game);
 				remove_node(game_manager->game_list, current);
-								
 				continue;
 			}
 		}

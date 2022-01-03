@@ -2,6 +2,8 @@
 #define GAME_H_INCLUDE
 
 #include "player.h"
+#include "row.h"
+#include "node.h"
 
 enum game_state
 {
@@ -14,10 +16,10 @@ enum game_state
 typedef struct
 {
 	player_t *player;
-	enum game_state current_state;
-
 	char *code;
-	char **guesses;
+	node_t *rows;
+
+	enum game_state current_state;
 } game_t;
 
 void destroy_game(game_t *game);

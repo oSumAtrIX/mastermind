@@ -49,7 +49,7 @@ GBRV bbbb     BOPR bww
 
 Player 1 won the game in 8 turns!
 Choose:
-n new round
+n new round (spieler nicht resetten)
 v change variant
-r restart game
+r restart game (spieler neu wählen)
 q quit game
