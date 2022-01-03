@@ -26,6 +26,6 @@ void destroy_game(game_t *game);
 game_t *create_game(const char *playername);
 void set_code(game_t *game);
 int add_guess(game_t *game, char *guess);
-void evaluate_result(game_t *game);
+int evaluate_result(game_t *game);
 
 #endif

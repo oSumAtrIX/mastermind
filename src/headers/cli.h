@@ -1,9 +1,10 @@
 #ifndef CLI_H_INCLUDE
 #define CLI_H_INCLUDE
 
-#define CLEAR_SCREEN() printf("\033[2J\033[1;1H")
-#define PRINT_HELP() printf("..")
+#include "row.h"
 
-// Todo: CLI prototypes
-void get_input(const char input[4]);
+int flush_buffer();
+void print_row(row_t *row);
+int validate_input(char *input, int length);
+void get_input(char input[4], int length);
 #endif

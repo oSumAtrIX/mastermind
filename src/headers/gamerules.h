@@ -13,9 +13,10 @@
 #define PLAYER_LIVES 10
 #define CODE_LENGTH 4
 
- /* 1: super mastermind */
-#define GAME_VARIANT 0
+/* 8 for super mastermind or 6 */
+#define C_PEGS 6
 
 #define OS "Windows"
 
+int available_colors[8] = { RED, GREEN, BLUE, YELLOW, VIOLET, ORANGE, PINK, TURQUOISE };
 #endif

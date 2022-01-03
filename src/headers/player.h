@@ -3,8 +3,8 @@
 
 typedef struct {
 	const char *name;
-	short score;
-	short lives;
+	int score;
+	int lives;
 } player_t;
 
 player_t *create_player(const char *name);

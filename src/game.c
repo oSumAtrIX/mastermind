@@ -20,12 +20,12 @@ void destroy_game(game_t *game)
 
 void set_code(game_t *game)
 {
-	int i, available_colors[8] = { RED, GREEN, BLUE, YELLOW, VIOLET, ORANGE, PINK, TURQUOISE };
+	int i;
 
 	srand(time(NULL));
 
 	for (i = 0; i < CODE_LENGTH; i++)
-		game->code[i] = available_colors[rand() % ((GAME_VARIANT ? 8 : 6) + 1)];
+		game->code[i] = available_colors[rand() % (C_PEGS + 1)];
 
 	game->current_state = GUESS;
 }
@@ -39,24 +39,22 @@ int add_guess(game_t *game, char *guess)
 	return 0;
 }
 
-void evaluate_result(game_t *game)
+int evaluate_result(game_t *game)
 {
-	printf("\n%s, your guess was %s\n", game->player->name, ((row_t *)game->rows[PLAYER_LIVES - game->player->lives].data)->guess);
-	printf("%s, your code was %s\n", game->player->name, game->code);
-	
 	if (game->player->lives == 0)
 	{
-		printf("%s, you lost!\n", game->player->name);
 		game->current_state = END;
+		return 0;
 	}
-	else
-	{
-		printf("%s, you have %d lives left\n", game->player->name, game->player->lives);
-		game->current_state = GUESS;
+
+	/* cmpcode */
+	if (0) {
+		game->current_state = END;
+		return 1;
 	}
 
 	game->current_state = GUESS;
-	/* TODO (compare_code.c) */
+	return -1;
 }
 
 game_t *create_game(const char *playername)
