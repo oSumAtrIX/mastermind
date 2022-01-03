@@ -9,7 +9,8 @@ TODO remove main function (included for testing purposes) */
 #include <row.h>
 
 #define CODELENGTH 4
-#define USED 'q' /* this char indicates, that this peg has been accounted for during comparison for black pegs */
+#define USED_A 'q' /* this char indicates, that this peg has been accounted for during comparison for black pegs */
+#define USED_B 'a' /* this char indicates, that this peg has been accounted for during comparison for white pegs two different are necessary as otherwise false positives will be indicated */
 int compare_code(int *count_correct, int *count_color_correct, const char guess[], const char code[]);
 
 int main()
@@ -44,7 +45,8 @@ Returns: 0 if everything went fine. */
         if (guess_copy[i] == code_copy[i])
         {
             ++(*count_correct);
-            code_copy[i] = USED;
+            code_copy[i] = USED_A;
+            guess_copy[i] = USED_B;
         }
     }
     for (i = 0; i < CODELENGTH; i++)
@@ -55,7 +57,8 @@ Returns: 0 if everything went fine. */
             if (guess_copy[i] == code_copy[j])
             {
                 ++(*count_color_correct);
-                code_copy[j] = USED;
+                code_copy[j] = USED_A;
+                guess_copy[i] = USED_B;
                 break;
             }
         }
