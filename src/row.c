@@ -14,7 +14,7 @@ void set_guess(row_t *row, char *guess)
 {
 	row->guess = guess;
 }
-void set_pebles(row_t *row, unsigned short c_right_pegs, unsigned short c_almost_right_pegs)
+void set_pebles(row_t *row, short c_right_pegs, short c_almost_right_pegs)
 {
 	row->c_right_pegs = c_right_pegs;
 	row->c_almost_right_pegs = c_almost_right_pegs;
