@@ -1,5 +1,6 @@
 /* 
 BUG YYBB GBRV 0 2 should be 0 1
+TODO Access most recent GUESS
 TODO remove main function (included for testing purposes) */
 #include <stdio.h>
 #include <string.h>
