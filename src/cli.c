@@ -2,6 +2,12 @@
 #include "cli.h"
 #include "gamerules.h"
 #include "row.h"
+#include <stdlib.h>
+
+void clear()
+{
+	system("@cls||clear");
+}
 
 /* TODO: add interface with pebles */
 void print_row(row_t *row) {

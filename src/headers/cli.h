@@ -6,5 +6,6 @@
 int flush_buffer();
 void print_row(row_t *row);
 int validate_input(char *input, int length);
-void get_input(char input[4], int length);
+void get_input(char *input, int length);
+
 #endif

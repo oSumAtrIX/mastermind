@@ -1,5 +1,5 @@
-#ifndef CLI_H_INCLUDE
-#define CLI_H_INCLUDE
+#ifndef GAME_MANAGER_H_INCLUDE
+#define GAME_MANAGER_H_INCLUDE
 
 #include "node.h"
 
@@ -8,9 +8,9 @@ typedef struct
 	node_t *game_list;
 } game_manager_t;
 
-void game_manager_init();
+game_manager_t *create_game_manager();
 
-void add_game(const char *foruser);
-void start();
+void add_game(game_manager_t *, const char *);
+void run_game_manager(game_manager_t *);
 
 #endif

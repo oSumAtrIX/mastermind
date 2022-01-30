@@ -1,8 +1,7 @@
 #ifndef ROW_H_INCLUDE
 #define ROW_H_INCLUDE
 
-typedef struct
-{
+typedef struct {
 	char *guess;
 	int c_right_pegs;
 	int c_almost_right_pegs;

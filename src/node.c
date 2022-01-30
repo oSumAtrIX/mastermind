@@ -9,11 +9,11 @@ node_t *node_new(void *data)
 	return node;
 }
 
-void prepend_node(node_t *head, void *data)
+void append_node(node_t *head, void *data)
 {
-	node_t *node = node_new(data);
-	node->next = head;
-	head = node;
+	while (head->next)
+		head = head->next;
+	head->next = node_new(data);
 }
 
 void remove_node(node_t *head, node_t *node)
