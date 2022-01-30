@@ -1,1 +1,1 @@
-gcc -Wall -Wextra -ansi -pedantic -o bin/mastermind -I ./src/headers/ src/main.c -std=c89
+gcc -Wall -Wextra -ansi -pedantic -o bin/mastermind -Isrc/headers/ src/*.c -std=c89
