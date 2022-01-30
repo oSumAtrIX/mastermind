@@ -9,6 +9,9 @@ void clear()
 	system("@cls||clear");
 }
 
+void draw(char *frame){
+	printf("%s\n", frame);
+}
 /* TODO: add interface with pebles */
 void print_row(row_t *row) {
 	printf("%s r:%i fast: %i", row->guess, row->c_right_pegs, row->c_almost_right_pegs);
@@ -36,6 +39,11 @@ int validate_input(char *input, int length)
 	return 1;
 }
 
+/**
+ * @brief Flush the current stdio buffer
+ * 
+ * @return int If we could flush the buffer
+ */
 int flush_buffer()
 {
 	int c;
@@ -44,6 +52,12 @@ int flush_buffer()
 	return c != EOF;
 }
 
+/**
+ * @brief Read the input for the pebbles
+ * 
+ * @param input The input to write to
+ * @param length The length of the input determined by the game type
+ */
 void get_input(char *input, int length)
 {
 	char c;

@@ -5,7 +5,7 @@
 #include "node.h"
 
 typedef struct {
-	struct node_t *screen_list;
+	node_t *screen_list;
 } screen_manager_t;
 
 screen_manager_t *create_screen_manager();

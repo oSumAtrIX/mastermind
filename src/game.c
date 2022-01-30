@@ -3,14 +3,16 @@
 #include <stdlib.h>
 #include <time.h>
 #include "game.h"
-#include "player.c"
+#include "player.h"
 #include "gamerules.h"
-#include "row.c"
+#include "row.h"
 #include "node.h"
 
-#define USED_A 'q' /* this char indicates, that this peg has been accounted for during comparison for black pegs */
-#define USED_B 'a' /* this char indicates, that this peg has been accounted for during comparison for white pegs two different are necessary as otherwise false positives will be indicated */
-
+/**
+ * @brief Free the current game object
+ * @details This will free the players of the current game, the mallocated code string, the games rows and the game object itself
+ * @param game The game object to free
+ */
 void destroy_game(game_t *game)
 {
 	int i;
@@ -23,6 +25,11 @@ void destroy_game(game_t *game)
 	free(game);
 }
 
+/**
+ * @brief Set the current game's code which will be used to check the players guesses
+ * 
+ * @param game The game to set the code for
+ */
 void set_code(game_t *game)
 {
 	int i;
@@ -35,12 +42,17 @@ void set_code(game_t *game)
 	game->current_state = GUESS;
 }
 
-int add_guess(game_t *game, char *guess)
+/**
+ * @brief Set the guess for a row.
+ * @details This will set the guess for a row and check if the guess is correct. The current row used will be selected by the players lives.
+ * @param game The game to set the guess for
+ * @param guess The guess to set
+ */
+void add_guess(game_t *game, char *guess)
 {
 	set_guess(game->rows[PLAYER_LIVES - game->player->lives], guess);
-	
+
 	game->current_state = EVALUATE_RESULT;
-	return 0;
 }
 
 int evaluate_result(game_t *game)
@@ -53,7 +65,7 @@ int evaluate_result(game_t *game)
 		game->current_state = END;
 		return 1;
 	}
-	
+
 	if (game->player->lives == 0)
 	{
 		game->current_state = END;
@@ -63,15 +75,16 @@ int evaluate_result(game_t *game)
 	return -1;
 }
 
+/**
+ * @brief Helper function to compare the game's code with the given row's guess
+ * 
+ * @param code The code to compare against
+ * @param row The row to compare the guess of
+ * @return int Always returns 0
+ */
 int compare_code(char *code, row_t *row)
-/* Function which compares the guess string with the secret code string and determines the number of black pegs (correct char and index) and white pegs (correct char , wrong index).
-Input: address to store black pegs, address to store white pegs, guess string, secret code string
-Saves: number of black and white pegs to corresponding addresses.
-Returns: 0 if everything went fine. */
 {
 	int i;
-	/* create copies of key and guess. As CODELENGTH will always be a comparebly small number, I don't
-    use dynamic array, which would have performance advantages with big arrays. */
 	char code_copy[CODE_LENGTH];
 	char guess_copy[CODE_LENGTH];
 	unsigned short count_correct = 0;
@@ -107,6 +120,12 @@ Returns: 0 if everything went fine. */
 	return 0;
 }
 
+/**
+ * @brief Create a game
+ * @details This will create a new game for a given playername.
+ * @param playername The name of the player for the current game
+ * @return game_t* The new game object
+ */
 game_t *create_game(const char *playername)
 {
 	int i;

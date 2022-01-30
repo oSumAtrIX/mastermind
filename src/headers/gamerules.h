@@ -16,7 +16,14 @@
 /* 8 for super mastermind or 6 */
 #define C_PEGS 6
 
+/* this char indicates, that this peg has been accounted for during comparison for black pegs */
+#define USED_A 'q'
+
+/* this char indicates, that this peg has been accounted for during comparison for white pegs two different are necessary as otherwise false positives will be indicated */
+#define USED_B 'a' 
+
 #define OS "Windows"
 
-int available_colors[8] = { RED, GREEN, BLUE, YELLOW, VIOLET, ORANGE, PINK, TURQUOISE };
+extern int available_colors[8];
+
 #endif

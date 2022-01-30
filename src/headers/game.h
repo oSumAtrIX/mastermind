@@ -25,7 +25,7 @@ typedef struct
 void destroy_game(game_t *game);
 game_t *create_game(const char *playername);
 void set_code(game_t *game);
-int add_guess(game_t *game, char *guess);
+void add_guess(game_t *game, char *guess);
 int evaluate_result(game_t *game);
 int compare_code(char *code, row_t *row);
 
