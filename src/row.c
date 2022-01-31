@@ -1,12 +1,14 @@
-#include "row.h"
 #include <stdlib.h>
+#include <string.h>
+#include "row.h"
+#include "gamerules.h"
 
 /**
  * @brief Free the row object
  * @details This will free the row object and all of its primitive children
  * @param row The row object to free
  */
-void destroy_row(row_t *row)
+void row_destroy(row_t *row)
 {
 	free(row);
 }
@@ -19,6 +21,7 @@ void destroy_row(row_t *row)
 row_t *create_row()
 {
 	row_t *row = malloc(sizeof(row_t));
+	row->guess = calloc(1, CODE_LENGTH + 1);
 	return row;
 }
 
@@ -30,18 +33,18 @@ row_t *create_row()
  */
 void set_guess(row_t *row, char *guess)
 {
-	row->guess = guess;
+	strcpy(row->guess, guess);
 }
 
 /**
  * @brief Set the pebles for the given row
  * 
  * @param row The row to set the pebles for
- * @param c_right_pegs The number of correct pebles
- * @param c_almost_right_pegs The number of almost correct pebles
+ * @param black_pegs The number of correct pebles
+ * @param white_pegs The number of almost correct pebles
  */
-void set_pebles(row_t *row, int c_right_pegs, int c_almost_right_pegs)
+void set_pebles(row_t *row, int black_pegs, int white_pegs)
 {
-	row->c_right_pegs = c_right_pegs;
-	row->c_almost_right_pegs = c_almost_right_pegs;
+	row->black_pegs = black_pegs;
+	row->white_pegs = white_pegs;
 }

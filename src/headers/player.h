@@ -2,12 +2,12 @@
 #define PLAYER_H_INCLUDE
 
 typedef struct {
-	const char *name;
+	char *name;
 	int score;
 	int lives;
 } player_t;
 
-player_t *create_player(const char *name);
+player_t *create_player(char *username);
 void destroy_player(player_t *player);
 
 #endif

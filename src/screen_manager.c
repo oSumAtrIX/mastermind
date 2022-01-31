@@ -9,7 +9,7 @@
  * @details The screen manager holds a list of screens
  * @return screen_manager_t* The created screen manager object
  */
-screen_manager_t *create_screen_manager()
+screen_manager_t *screen_manager_new()
 {
 	screen_manager_t *screen_manager = malloc(sizeof(screen_manager_t));
 	return screen_manager;
@@ -50,7 +50,6 @@ void show_screen(screen_manager_t *screen_manager, unsigned short id)
 			continue;
 
 		result = run_screen(screen);
-
 		/* 
 		If the screen script returns something other than -1, it means, the user entered an invalid input.
 		We try to minimize the amount of error which we have to report to the user, so we just go back to the main menu.
@@ -65,13 +64,8 @@ void show_screen(screen_manager_t *screen_manager, unsigned short id)
  * @details This will loop over all screens of the current screen manager and free them
  * @param screen_manager The screen manager to free
  */
-void destroy_screen_manager(screen_manager_t *screen_manager)
+void screen_manager_destroy(screen_manager_t *screen_manager)
 {
-	node_t *current_screen;
-	for (current_screen = screen_manager->screen_list; current_screen; current_screen = current_screen->next)
-	{
-		screen_t *screen = (screen_t *)current_screen->data;
-		destroy_screen(screen);
-	}
+	nodes_destroy(screen_manager->screen_list, screen_destroy);
 	free(screen_manager);
 }

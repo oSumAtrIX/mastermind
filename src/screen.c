@@ -13,12 +13,13 @@
  * @param script The script to execute when the screen is shown
  * @return screen_t* The created screen object
  */
-screen_t *create_screen(unsigned short id, char *frame, node_t *options, void (*script)())
+screen_t *screen_new(unsigned short id, char *frame, node_t *options, void (*script_before)(), void (*script)())
 {
 	screen_t *screen = malloc(sizeof(screen_t));
 	screen->id = id;
 	screen->frame = frame;
 	screen->screen_options = options;
+	screen->screen_script_before = script_before;
 	screen->screen_script = script;
 	return screen;
 }
@@ -108,21 +109,32 @@ int run_screen(screen_t *screen)
 	/* draw screen */
 	draw(screen->frame);
 
+	/* run script of screen */
+	if (screen->screen_script_before) screen->screen_script_before();
+
 	if (screen->screen_options) {
 		/* draw options */
+		char selection;
+		
 		printf("\n|");
 		loop_and_execute_inner(screen, print_option, 0);
-		printf("\nSelect: ");
+		printf("\n> ");
 
-		/* get user input */
-		selected_screen_id = loop_and_execute_inner(screen, get_screen_id, getchar());
-		flush_buffer();
+		selection = getchar();
+		if (selection != '\n') flush_buffer();
+		selected_screen_id = loop_and_execute_inner(screen, get_screen_id, selection);
+
 	}
-
+	
 	/* run script of screen */
 	if (screen->screen_script) screen->screen_script();
-	
+
 	return selected_screen_id;
+}
+
+void option_destroy(void *option){
+	screen_option_t *option_to_free = (screen_option_t *)option;
+	free(option_to_free);
 }
 
 /**
@@ -130,19 +142,9 @@ int run_screen(screen_t *screen)
  * @details This function will free the memory of a screen and all its options
  * @param screen The screen to free
  */
-void destroy_screen(screen_t *screen)
+void screen_destroy(void *screen)
 {
-	/* delete list of screen_options */
-	node_t *next;
-	node_t *current_option = screen->screen_options;
-	while(current_option)
-	{
-		free(current_option->data);
-
-		next = current_option->next;
-		free(current_option);
-		
-		current_option = next;
-	}
-	free(screen);
+	screen_t *screen_to_free = (screen_t *)screen;
+	nodes_destroy(screen_to_free->screen_options, option_destroy);
+	free(screen_to_free);
 }

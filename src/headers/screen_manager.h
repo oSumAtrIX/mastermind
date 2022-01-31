@@ -8,10 +8,10 @@ typedef struct {
 	node_t *screen_list;
 } screen_manager_t;
 
-screen_manager_t *create_screen_manager();
+screen_manager_t *screen_manager_new();
 void read_config(screen_manager_t *screen_manager, char* from_file);
 void add_screen(screen_manager_t *screen_manager, screen_t *screen);
 void show_screen(screen_manager_t *screen_manager, unsigned short id);
 
-void destroy_screen_manager(screen_manager_t *screen_manager);
+void screen_manager_destroy(screen_manager_t *screen_manager);
 #endif
