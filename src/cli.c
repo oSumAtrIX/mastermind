@@ -2,11 +2,23 @@
 #include "cli.h"
 #include "gamerules.h"
 #include "row.h"
+#include <stdlib.h>
 
-/* TODO: add interface with pebles */
-void print_row(row_t *row) {
-	printf("%s r:%i fast: %i", row->guess, row->c_right_pegs, row->c_almost_right_pegs);
+void clear()
+{
+	system("@cls||clear");
 }
+
+void write_line(char *str)
+{
+	printf("%s", str);
+}
+
+void draw(char *frame)
+{
+	printf("%s\n", frame);
+}
+
 
 int validate_input(char *input, int length)
 {
@@ -17,39 +29,49 @@ int validate_input(char *input, int length)
 		int invalid = 1;
 		char current_char = input[i];
 
-		for (j = 0; j < C_PEGS; j++)
+		for (j = 0; j < count_pegs; j++)
 			if (current_char == available_colors[j])
 			{
 				invalid = 0;
 				break;
 			}
-
 		if (invalid)
 			return 0;
 	}
 	return 1;
 }
 
-int flush_buffer()
+/**
+ * @brief Flush the current stdio buffer
+ */
+void flush_buffer()
 {
 	int c;
 	while ((c = getchar()) != '\n' && c != EOF)
 		;
-	return c != EOF;
 }
 
-void get_input(char *input, int length)
+/**
+ * @brief Read input from the console
+ * 
+ * @param input The input to write to
+ * @param length The length of the input determined by the game type (including \0)
+ */
+void read_input(char input[], int length)
 {
-	char c;
-	int i;
-	for (i = 0; i < length; i++)
-	{
+	char c = getchar();
+	int i = 0;
+	while (c != '\n') {
+		if (i > length - 1){
+			input[i] = 0;
+			flush_buffer();
+			return;
+		}
+		if (c == EOF) return;
+
+		input[i++] = c;
 		c = getchar();
-		if (c == '\n' || c == EOF) {
-			input[i] = '\0';
-			break;
-		}		
-		input[i] = c;
 	}
-	if (i >= length) flush_buffer();
+	input[i] = 0;
+	return;
 }

@@ -22,10 +22,10 @@ typedef struct
 	enum game_state current_state;
 } game_t;
 
-void destroy_game(game_t *game);
-game_t *create_game(const char *playername);
-void set_code(game_t *game);
-int add_guess(game_t *game, char *guess);
+void game_destroy(void *game);
+game_t *game_new(char *username);
+void set_code(game_t *game, char *code);
+void add_guess(game_t *game, char *guess);
 int evaluate_result(game_t *game);
 int compare_code(char *code, row_t *row);
 
