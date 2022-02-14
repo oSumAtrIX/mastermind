@@ -49,9 +49,11 @@ result_manager_t *result_manager_new(char *from)
 	result_manager_t *result_manager = calloc(1, sizeof(result_manager_t));
 
 	char *save_file = read_file(from);
+	char *line;
 
-	char *line = strtok(save_file, "\n");
-	if (line)
+	if (!save_file) return result_manager;
+
+	if ((line = strtok(save_file, "\n")))
 	{
 		node_t *lines = node_new(line);
 		node_t *current;
